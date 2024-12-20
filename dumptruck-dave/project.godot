@@ -35,6 +35,7 @@ Candy=""
 2d_physics/layer_2="Elf"
 2d_physics/layer_3="Wall"
 2d_physics/layer_4="Pickable"
+2d_physics/layer_10="Hands"
 
 [rendering]
 

@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://djxvvu8inqgyk"]
+
+[ext_resource type="Script" path="res://characters/player/player_hand.gd" id="1_ohule"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4xspq"]
+size = Vector2(320, 360)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aygn5"]
+size = Vector2(320, 360)
+
+[node name="PlayerHands" type="Node2D"]
+
+[node name="LeftHandZone" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 128
+script = ExtResource("1_ohule")
+
+[node name="CollisionZone" type="CollisionShape2D" parent="LeftHandZone"]
+shape = SubResource("RectangleShape2D_4xspq")
+
+[node name="RightHandZone" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 128
+script = ExtResource("1_ohule")
+
+[node name="CollisionZone" type="CollisionShape2D" parent="RightHandZone"]
+shape = SubResource("RectangleShape2D_aygn5")
+
+[node name="LeftHand" type="Sprite2D" parent="."]
+
+[node name="RightHand" type="Sprite2D" parent="."]
+
+[node name="LeftHandBasePosition" type="Node2D" parent="."]
+
+[node name="RightHandBasePosition" type="Node2D" parent="."]
