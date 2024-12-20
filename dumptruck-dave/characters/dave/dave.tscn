@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://fegkcsa3fxis"]
+
+[ext_resource type="Script" path="res://characters/dave/dave.gd" id="1_6c4km"]
+[ext_resource type="Texture2D" uid="uid://cgp73t13momcw" path="res://icon.svg" id="1_uva5d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q5qbl"]
+size = Vector2(121, 125)
+
+[node name="Dave" type="CharacterBody2D"]
+script = ExtResource("1_6c4km")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_uva5d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 0.5)
+shape = SubResource("RectangleShape2D_q5qbl")
