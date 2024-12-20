@@ -3,9 +3,10 @@
 [ext_resource type="Script" path="res://world/pickable.gd" id="1_p2mv5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ucg5k"]
-size = Vector2(48, 128)
+size = Vector2(48, 46)
 
 [node name="Pickable" type="Area2D"]
+texture_filter = 1
 collision_layer = 8
 script = ExtResource("1_p2mv5")
 

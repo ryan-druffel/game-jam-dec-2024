@@ -1,5 +1,4 @@
-class_name CandyCane
-extends Pickable
+class_name CandyCane extends Pickable
 
 
 # Called when the node enters the scene tree for the first time.
