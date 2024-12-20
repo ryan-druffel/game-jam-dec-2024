@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqsmahyy4yrn"]
+
+[ext_resource type="Script" path="res://world/items/item.gd" id="1_bekr7"]
+[ext_resource type="PackedScene" uid="uid://da312amrww033" path="res://world/pickable.tscn" id="2_cvtkd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ewkam"]
+size = Vector2(26, 47)
+
+[node name="Item" type="Area2D"]
+script = ExtResource("1_bekr7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ewkam")
+
+[node name="Pickable" parent="." instance=ExtResource("2_cvtkd")]
+collision_mask = 512
+
+[connection signal="drop" from="Pickable" to="." method="_on_pickable_drop"]
+[connection signal="pick_up" from="Pickable" to="." method="_on_pickable_pick_up"]

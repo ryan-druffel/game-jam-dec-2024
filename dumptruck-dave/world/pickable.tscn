@@ -3,18 +3,15 @@
 [ext_resource type="Script" path="res://world/pickable.gd" id="1_p2mv5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ucg5k"]
-size = Vector2(48, 46)
+size = Vector2(30, 31)
 
 [node name="Pickable" type="Area2D"]
 texture_filter = 1
 collision_layer = 8
 script = ExtResource("1_p2mv5")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ucg5k")
 
-[connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

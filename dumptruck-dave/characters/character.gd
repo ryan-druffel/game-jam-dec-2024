@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 
 @export var speed = 300.0
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
 func _ready() -> void:
 	Globals.character_entered.emit(self)
@@ -22,3 +23,14 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, speed)
 
 	move_and_slide()
+
+func move(position: Vector2) -> void:
+	collision_shape.disabled = true
+	translate(position - global_position)
+	collision_shape.disabled = false
+
+func _on_pickable_pick_up() -> void:
+	pass # Replace with function body.
+
+func _on_pickable_drop() -> void:
+	pass # Replace with function body.

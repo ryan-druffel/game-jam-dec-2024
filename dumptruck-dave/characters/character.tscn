@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bafdjhctfe3uv"]
+
+[ext_resource type="Script" path="res://characters/character.gd" id="1_0uug8"]
+[ext_resource type="Texture2D" uid="uid://cgp73t13momcw" path="res://icon.svg" id="2_86hsc"]
+[ext_resource type="PackedScene" uid="uid://da312amrww033" path="res://world/pickable.tscn" id="3_pf72o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2t064"]
+size = Vector2(30, 32)
+
+[node name="Character" type="CharacterBody2D"]
+script = ExtResource("1_0uug8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_86hsc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 0.5)
+shape = SubResource("RectangleShape2D_2t064")
+
+[node name="Pickable" parent="." instance=ExtResource("3_pf72o")]
+
+[connection signal="drop" from="Pickable" to="." method="_on_pickable_drop"]
+[connection signal="pick_up" from="Pickable" to="." method="_on_pickable_pick_up"]

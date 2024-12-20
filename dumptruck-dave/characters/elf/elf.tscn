@@ -1,16 +1,5 @@
-[gd_scene load_steps=4 format=3 uid="uid://0nbhysihnr7d"]
+[gd_scene load_steps=2 format=3 uid="uid://0nbhysihnr7d"]
 
-[ext_resource type="Texture2D" uid="uid://cgp73t13momcw" path="res://icon.svg" id="1_3vyjf"]
-[ext_resource type="Script" path="res://characters/elf/elf.gd" id="1_hg8kg"]
+[ext_resource type="PackedScene" uid="uid://bafdjhctfe3uv" path="res://characters/character.tscn" id="1_v36ba"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qedbv"]
-size = Vector2(128, 128)
-
-[node name="Elf" type="CharacterBody2D"]
-script = ExtResource("1_hg8kg")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_3vyjf")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_qedbv")
+[node name="Elf" instance=ExtResource("1_v36ba")]
