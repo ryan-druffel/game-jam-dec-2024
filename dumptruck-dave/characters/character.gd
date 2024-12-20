@@ -4,6 +4,9 @@ extends CharacterBody2D
 
 @export var speed = 300.0
 
+func _ready() -> void:
+	Globals.character_entered.emit(self)
+
 func get_input() -> void:
 	pass
 
