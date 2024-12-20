@@ -10,7 +10,7 @@ script = ExtResource("1_r0pns")
 [node name="Environment" type="Node2D" parent="."]
 
 [node name="Dave" parent="." instance=ExtResource("1_7qsgh")]
-speed = null
+speed = 300.0
 
 [node name="CandyCane" parent="." instance=ExtResource("3_b3sne")]
 position = Vector2(216, -56)
