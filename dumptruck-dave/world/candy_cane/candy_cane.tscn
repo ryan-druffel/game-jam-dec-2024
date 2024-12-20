@@ -1,5 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cdnuqxadp4wx8"]
+[gd_scene load_steps=3 format=3 uid="uid://cdnuqxadp4wx8"]
 
 [ext_resource type="PackedScene" uid="uid://da312amrww033" path="res://world/pickable.tscn" id="1_atdhm"]
+[ext_resource type="Script" path="res://world/candy_cane/candy_cane.gd" id="2_ufrxp"]
 
-[node name="CandyCane" instance=ExtResource("1_atdhm")]
+[node name="CandyCane" groups=["Candy"] instance=ExtResource("1_atdhm")]
+script = ExtResource("2_ufrxp")
