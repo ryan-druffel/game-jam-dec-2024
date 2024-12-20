@@ -2,6 +2,7 @@ class_name Pickable
 extends CollisionObject2D
 
 signal pick_up()
+signal move(target_pos: Vector2)
 signal drop()
 
 var hovered = false
@@ -47,8 +48,7 @@ func _on_mouse_exited() -> void:
 func _physics_process(delta: float) -> void:
 	if picked:
 		var mouse_pos: Vector2 = get_global_mouse_position()
-		if get_parent().has_method("move"):
-			get_parent().move(mouse_pos)
+		move.emit(mouse_pos)
 
 func remove() -> void:
 	Globals.pickable_exited.emit(self)

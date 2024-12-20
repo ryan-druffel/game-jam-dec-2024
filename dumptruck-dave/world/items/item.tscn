@@ -18,4 +18,5 @@ shape = SubResource("RectangleShape2D_ewkam")
 collision_mask = 512
 
 [connection signal="drop" from="Pickable" to="." method="_on_pickable_drop"]
+[connection signal="move" from="Pickable" to="." method="_on_pickable_move"]
 [connection signal="pick_up" from="Pickable" to="." method="_on_pickable_pick_up"]

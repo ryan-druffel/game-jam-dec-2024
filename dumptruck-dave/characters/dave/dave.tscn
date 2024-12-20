@@ -9,3 +9,6 @@ scale = Vector2(0.24, 0.24)
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(0, 0)
+
+[node name="Drop" parent="FSM" index="2"]
+fixed_duration = 1.0
