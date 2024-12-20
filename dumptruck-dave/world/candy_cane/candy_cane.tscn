@@ -1,17 +1,5 @@
-[gd_scene load_steps=4 format=3 uid="uid://cclge185jfmyf"]
+[gd_scene load_steps=2 format=3 uid="uid://cdnuqxadp4wx8"]
 
-[ext_resource type="Script" path="res://world/pickable.gd" id="1_6wdn3"]
-[ext_resource type="Texture2D" uid="uid://cgp73t13momcw" path="res://icon.svg" id="1_t676o"]
+[ext_resource type="PackedScene" uid="uid://da312amrww033" path="res://world/pickable.tscn" id="1_atdhm"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xld33"]
-size = Vector2(48, 128)
-
-[node name="CandyCane" type="Area2D"]
-script = ExtResource("1_6wdn3")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.375, 1)
-texture = ExtResource("1_t676o")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_xld33")
+[node name="CandyCane" instance=ExtResource("1_atdhm")]
