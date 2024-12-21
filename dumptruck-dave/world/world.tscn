@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://uyvueydylfii"]
+[gd_scene load_steps=6 format=3 uid="uid://uyvueydylfii"]
 
 [ext_resource type="PackedScene" uid="uid://fegkcsa3fxis" path="res://characters/dave/dave.tscn" id="1_7qsgh"]
 [ext_resource type="Script" path="res://world/world.gd" id="1_r0pns"]
 [ext_resource type="PackedScene" uid="uid://cdnuqxadp4wx8" path="res://world/candy_cane/candy_cane.tscn" id="3_b3sne"]
 [ext_resource type="PackedScene" uid="uid://djxvvu8inqgyk" path="res://characters/player/player_hands.tscn" id="4_8www4"]
+[ext_resource type="Texture2D" uid="uid://d0ipws25jxlrv" path="res://world/TestBackdrop.png" id="5_0n8dg"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_r0pns")
@@ -43,5 +44,10 @@ position = Vector2(-160, 0)
 [node name="CollisionZone" parent="PlayerHands/RightHandZone" index="0"]
 visible = false
 position = Vector2(160, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -200
+position = Vector2(0, 1)
+texture = ExtResource("5_0n8dg")
 
 [editable path="PlayerHands"]
