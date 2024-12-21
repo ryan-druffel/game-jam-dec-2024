@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://fegkcsa3fxis"]
+[gd_scene load_steps=21 format=3 uid="uid://fegkcsa3fxis"]
 
 [ext_resource type="PackedScene" uid="uid://ckaq71fyniogl" path="res://characters/character.tscn" id="1_gtsss"]
 [ext_resource type="Script" path="res://characters/dave/dave.gd" id="2_pxpus"]
 [ext_resource type="Script" path="res://characters/dave/gobble_state.gd" id="3_41kyt"]
 [ext_resource type="Texture2D" uid="uid://c2rmigbeand82" path="res://characters/dave/Dave.png" id="3_mkdno"]
 [ext_resource type="Script" path="res://characters/dave/dave_idle_state.gd" id="3_ohmrq"]
+[ext_resource type="Texture2D" uid="uid://fgt3om8orpgw" path="res://characters/Shadow.png" id="4_vhvdj"]
 [ext_resource type="Script" path="res://world/make_parent_look_iso.gd" id="6_whaql"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p3f4i"]
@@ -117,8 +118,8 @@ autoplay = "Idle"
 position = Vector2(1, -1)
 shape = SubResource("RectangleShape2D_bvl8n")
 
-[node name="Pickable" parent="." index="2"]
-pickup_offset = Vector2(0, 24)
+[node name="Pickable" parent="." index="2" node_paths=PackedStringArray("pickup_offset")]
+pickup_offset = NodePath("../PickupSpot")
 
 [node name="CollisionShape2D" parent="Pickable" index="0"]
 position = Vector2(1, -1)
@@ -140,8 +141,18 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CandyCaneArea2D" index="0"]
 shape = SubResource("CircleShape2D_l8kt5")
 
-[node name="Scaler" type="Node2D" parent="." index="5" node_paths=PackedStringArray("scale_this")]
+[node name="Scaler" type="Node2D" parent="." index="5" node_paths=PackedStringArray("scale_target", "order_target")]
 script = ExtResource("6_whaql")
-scale_this = NodePath("..")
+scale_target = NodePath("..")
+order_target = NodePath("../Sprite2D")
+
+[node name="Shadow" type="Sprite2D" parent="." index="6"]
+z_index = -101
+position = Vector2(1, 28)
+scale = Vector2(0.75, 0.078125)
+texture = ExtResource("4_vhvdj")
+
+[node name="PickupSpot" type="Node2D" parent="." index="7"]
+position = Vector2(0, -23)
 
 [editable path="Pickable"]

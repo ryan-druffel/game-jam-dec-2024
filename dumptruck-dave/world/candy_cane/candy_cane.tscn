@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cdnuqxadp4wx8"]
+[gd_scene load_steps=10 format=3 uid="uid://cdnuqxadp4wx8"]
 
 [ext_resource type="PackedScene" uid="uid://dqsmahyy4yrn" path="res://world/items/item.tscn" id="1_yn0vl"]
 [ext_resource type="Script" path="res://world/candy_cane/candy_cane.gd" id="2_nkj87"]
 [ext_resource type="SpriteFrames" uid="uid://wmerp1g35aaj" path="res://world/candy_cane/candy_cane_sprite.tres" id="2_rysqq"]
 [ext_resource type="Script" path="res://world/make_parent_look_iso.gd" id="4_83qgq"]
+[ext_resource type="Texture2D" uid="uid://fgt3om8orpgw" path="res://characters/Shadow.png" id="4_octg8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dir4h"]
 size = Vector2(26, 47)
@@ -39,8 +40,8 @@ autoplay = "default"
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(-1, -0.5)
 
-[node name="Pickable" parent="." index="2"]
-pickup_offset = Vector2(0, 20)
+[node name="Pickable" parent="." index="2" node_paths=PackedStringArray("pickup_offset")]
+pickup_offset = NodePath("../PickupSpot")
 
 [node name="CollisionShape2D" parent="Pickable" index="0"]
 position = Vector2(-1, -0.5)
@@ -50,8 +51,18 @@ shape = SubResource("RectangleShape2D_dir4h")
 emitting = false
 process_material = SubResource("ParticleProcessMaterial_8l1ml")
 
-[node name="Scaler" type="Node2D" parent="." index="5" node_paths=PackedStringArray("scale_this")]
+[node name="Scaler" type="Node2D" parent="." index="5" node_paths=PackedStringArray("scale_target", "order_target")]
 script = ExtResource("4_83qgq")
-scale_this = NodePath("..")
+scale_target = NodePath("..")
+order_target = NodePath("../AnimatedSprite2D")
+
+[node name="PickupSpot" type="Node2D" parent="." index="6"]
+position = Vector2(0, -19)
+
+[node name="Shadow" type="Sprite2D" parent="." index="7"]
+z_index = -101
+position = Vector2(-1, 22)
+scale = Vector2(0.390625, 0.109375)
+texture = ExtResource("4_octg8")
 
 [editable path="Pickable"]

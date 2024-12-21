@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://djxvvu8inqgyk"]
+[gd_scene load_steps=7 format=3 uid="uid://djxvvu8inqgyk"]
 
 [ext_resource type="Script" path="res://characters/player/player_hand.gd" id="1_ohule"]
 [ext_resource type="SpriteFrames" uid="uid://8rskb5fhrgwn" path="res://characters/player/player_mitten.tres" id="2_bjcib"]
 [ext_resource type="Script" path="res://world/make_parent_look_iso.gd" id="3_hudhw"]
+[ext_resource type="Texture2D" uid="uid://fgt3om8orpgw" path="res://characters/Shadow.png" id="4_hpkvp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4xspq"]
 size = Vector2(320, 360)
@@ -29,16 +30,25 @@ shape = SubResource("RectangleShape2D_4xspq")
 position = Vector2(-120, 141)
 
 [node name="LeftHand" type="Node2D" parent="LeftHandZone"]
+z_index = 10
 
 [node name="HandSprite" type="AnimatedSprite2D" parent="LeftHandZone/LeftHand"]
 z_index = 5
+position = Vector2(0, -8)
 scale = Vector2(2, 2)
 sprite_frames = ExtResource("2_bjcib")
 animation = &"idle"
 
-[node name="Scaler" type="Node2D" parent="LeftHandZone/LeftHand" node_paths=PackedStringArray("scale_this")]
+[node name="Scaler" type="Node2D" parent="LeftHandZone/LeftHand" node_paths=PackedStringArray("scale_target", "order_target")]
 script = ExtResource("3_hudhw")
-scale_this = NodePath("..")
+scale_target = NodePath("..")
+order_target = NodePath("../HandSprite")
+
+[node name="Shadow" type="Sprite2D" parent="LeftHandZone/LeftHand"]
+z_index = -101
+position = Vector2(0, 48)
+scale = Vector2(0.5, 0.125)
+texture = ExtResource("4_hpkvp")
 
 [node name="RightHandZone" type="Area2D" parent="." node_paths=PackedStringArray("hand", "hold_position")]
 collision_layer = 128
@@ -55,15 +65,24 @@ shape = SubResource("RectangleShape2D_aygn5")
 position = Vector2(123, 146)
 
 [node name="RightHand" type="Node2D" parent="RightHandZone"]
+z_index = 10
 
 [node name="HandSprite" type="AnimatedSprite2D" parent="RightHandZone/RightHand"]
 z_index = 5
+position = Vector2(0, -8)
 rotation = 3.14159
 scale = Vector2(2, -2)
 sprite_frames = ExtResource("2_bjcib")
 animation = &"idle"
 autoplay = "idle"
 
-[node name="Scaler" type="Node2D" parent="RightHandZone/RightHand" node_paths=PackedStringArray("scale_this")]
+[node name="Scaler" type="Node2D" parent="RightHandZone/RightHand" node_paths=PackedStringArray("scale_target", "order_target")]
 script = ExtResource("3_hudhw")
-scale_this = NodePath("..")
+scale_target = NodePath("..")
+order_target = NodePath("../HandSprite")
+
+[node name="Shadow" type="Sprite2D" parent="RightHandZone/RightHand"]
+z_index = -101
+position = Vector2(0, 48)
+scale = Vector2(0.5, 0.125)
+texture = ExtResource("4_hpkvp")

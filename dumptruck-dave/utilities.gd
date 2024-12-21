@@ -6,6 +6,7 @@ const MAX_FOLLOW_SPEED : float = 20;
 const MIN_SCALE	: float =	0.5;
 const MAX_SCALE	: float =	2;
 const SCREEN_SIZE_Y : float = 360;
+const ORDERING_VARIATION = 100;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -33,3 +34,8 @@ static func get_scale_with_screen_factor(vert_screen_position : float) -> float:
 	var screen_frac : float = (vert_screen_position / SCREEN_SIZE_Y);
 	var scale_to : float = screen_frac * (MAX_SCALE - MIN_SCALE) + MIN_SCALE
 	return scale_to
+	
+static func get_order_with_screen_factor(vert_screen_position : float) -> float:
+	var screen_frac : float = (vert_screen_position / SCREEN_SIZE_Y);
+	var order_delta : float = (screen_frac - 0.5) * ORDERING_VARIATION
+	return order_delta
