@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cdnuqxadp4wx8" path="res://world/candy_cane/candy_cane.tscn" id="3_b3sne"]
 [ext_resource type="PackedScene" uid="uid://djxvvu8inqgyk" path="res://characters/player/player_hands.tscn" id="4_8www4"]
 [ext_resource type="Texture2D" uid="uid://d0ipws25jxlrv" path="res://world/TestBackdrop.png" id="5_0n8dg"]
+[ext_resource type="PackedScene" uid="uid://0nbhysihnr7d" path="res://characters/elf/elf.tscn" id="5_ixdkk"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_r0pns")
@@ -49,5 +50,10 @@ position = Vector2(160, 0)
 z_index = -200
 position = Vector2(0, 1)
 texture = ExtResource("5_0n8dg")
+[node name="Elf" parent="." instance=ExtResource("5_ixdkk")]
+position = Vector2(153, 58)
+
+[node name="Elf2" parent="." instance=ExtResource("5_ixdkk")]
+position = Vector2(-133, 55)
 
 [editable path="PlayerHands"]
