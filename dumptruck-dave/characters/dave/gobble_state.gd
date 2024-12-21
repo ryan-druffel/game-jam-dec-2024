@@ -6,6 +6,7 @@ var candy_cane: CandyCane
 func _on_enter() -> void:
 	super._on_enter()
 	var dave: Dave = character as Dave
+	dave.sprite.play("Gobble")
 	candy_cane = dave.get_nearest_candy_cane()
 	if candy_cane:
 		candy_cane.get_gobbled()

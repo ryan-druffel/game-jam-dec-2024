@@ -18,6 +18,7 @@ func _on_enter() -> void:
 	super._on_enter()
 	time_in_state = 0.0
 	print("Entering %s state" % name)
+	character.sprite.play(name)
 
 func _on_exit() -> void:
 	print("Exiting %s state" % name)

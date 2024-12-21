@@ -5,6 +5,8 @@ var can_move = false
 @export var speed = 300.0
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
+@onready var sprite: AnimatedSprite2D = $Sprite2D
+
 @onready var pickable: Pickable = $Pickable
 
 func _ready() -> void:

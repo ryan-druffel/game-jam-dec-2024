@@ -23,7 +23,7 @@ func _on_pickable_pick_up() -> void:
 
 
 func _on_pickable_move(target_pos: Vector2) -> void:
-	translate(target_pos - global_position)
+	translate(Utilities.smoothedMoveCarryThing(target_pos, global_position) * get_physics_process_delta_time())
 
 func disappear() -> void:
 	if !disappeared:

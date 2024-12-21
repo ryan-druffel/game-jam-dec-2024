@@ -9,8 +9,6 @@ enum HandStates {IDLE, FOLLOW, HOVER, GRAB}
 var hand_state		:	HandStates	=	HandStates.IDLE;
 var mouse_in_zone	:	bool;
 
-const MAX_FOLLOW_SPEED : float = 20;
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	input_pickable = true;
@@ -37,23 +35,16 @@ func _physics_process(delta):
 			followMousePosition();
 		HandStates.GRAB:
 			hand.play("held");
-			snapToMousePosition();
+			followMousePosition();
 			if not Input.is_mouse_button_pressed( 1 ):
 				hand_state = HandStates.FOLLOW;
 			
 func goHome():
-	var change : Vector2 = Utilities.logSmoothVector2(hold_position.global_position, hand.global_position, 0.1);
-	hand.global_position += (change if change.length() < MAX_FOLLOW_SPEED else MAX_FOLLOW_SPEED * (hold_position.global_position - hand.global_position)) * get_process_delta_time();
+	hand.global_position += Utilities.smoothedMoveCarryThing(hold_position.global_position, hand.global_position) * get_physics_process_delta_time();
 			
 func followMousePosition():
 	var mouse_pos : Vector2 = get_global_mouse_position();
-	var change : Vector2 = Utilities.logSmoothVector2(mouse_pos, hand.global_position, 0.1);
-	hand.global_position += (change if change.length() < MAX_FOLLOW_SPEED else MAX_FOLLOW_SPEED * (mouse_pos - hand.global_position)) * get_process_delta_time();
-	
-func snapToMousePosition():
-	var mouse_pos : Vector2 = get_global_mouse_position();
-	var change : Vector2 = Utilities.logSmoothVector2(mouse_pos, hand.global_position, 0.05);
-	hand.global_position += change * get_process_delta_time();
+	hand.global_position += Utilities.smoothedMoveCarryThing(mouse_pos, hand.global_position) * get_physics_process_delta_time();
 	
 
 func onMouseOverlap():

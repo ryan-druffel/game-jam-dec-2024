@@ -5,6 +5,8 @@ var scan_for_candy: float = 1.0
 
 func _on_enter() -> void:
 	super._on_enter()
+	var dave: Dave = character as Dave
+	dave.sprite.play("Idle")
 	scan_for_candy = 1.0
 	do_candy_scan()
 

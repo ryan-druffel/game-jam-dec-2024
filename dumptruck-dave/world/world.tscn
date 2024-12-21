@@ -14,7 +14,22 @@ script = ExtResource("1_r0pns")
 
 [node name="CandyCane" parent="." instance=ExtResource("3_b3sne")]
 y_sort_enabled = false
-position = Vector2(216, -56)
+position = Vector2(-200, 135)
+collision_layer = 1
+
+[node name="CandyCane2" parent="." instance=ExtResource("3_b3sne")]
+y_sort_enabled = false
+position = Vector2(233, -130)
+collision_layer = 1
+
+[node name="CandyCane3" parent="." instance=ExtResource("3_b3sne")]
+y_sort_enabled = false
+position = Vector2(-199, -18)
+collision_layer = 1
+
+[node name="CandyCane4" parent="." instance=ExtResource("3_b3sne")]
+y_sort_enabled = false
+position = Vector2(17, 125)
 collision_layer = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -22,9 +37,11 @@ collision_layer = 1
 [node name="PlayerHands" parent="." instance=ExtResource("4_8www4")]
 
 [node name="CollisionZone" parent="PlayerHands/LeftHandZone" index="0"]
+visible = false
 position = Vector2(-160, 0)
 
 [node name="CollisionZone" parent="PlayerHands/RightHandZone" index="0"]
+visible = false
 position = Vector2(160, 0)
 
 [editable path="PlayerHands"]

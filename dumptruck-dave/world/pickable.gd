@@ -9,6 +9,8 @@ signal drop()
 var hovered = false
 var picked = false
 
+@export var pickup_offset : Vector2;
+
 func _ready() -> void:
 	Globals.pickable_entered.emit(self)
 
@@ -51,7 +53,7 @@ func _on_mouse_exited() -> void:
 func _physics_process(delta: float) -> void:
 	if picked:
 		var mouse_pos: Vector2 = get_global_mouse_position()
-		move.emit(mouse_pos)
+		move.emit(mouse_pos + pickup_offset)
 
 func remove() -> void:
 	Globals.pickable_exited.emit(self)

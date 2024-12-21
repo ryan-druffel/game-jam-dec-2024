@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://bafdjhctfe3uv"]
+[gd_scene load_steps=8 format=3 uid="uid://ckaq71fyniogl"]
 
 [ext_resource type="Script" path="res://characters/character.gd" id="1_0uug8"]
-[ext_resource type="Texture2D" uid="uid://cgp73t13momcw" path="res://icon.svg" id="2_86hsc"]
 [ext_resource type="PackedScene" uid="uid://da312amrww033" path="res://world/pickable.tscn" id="3_pf72o"]
 [ext_resource type="Script" path="res://characters/state_machine.gd" id="4_u3cvr"]
 [ext_resource type="Script" path="res://characters/pick_state.gd" id="5_1pyko"]
@@ -14,9 +13,8 @@ size = Vector2(30, 32)
 [node name="Character" type="CharacterBody2D"]
 script = ExtResource("1_0uug8")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
-texture = ExtResource("2_86hsc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.5, 0.5)
