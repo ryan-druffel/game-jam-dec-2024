@@ -32,6 +32,7 @@ position = Vector2(-120, 141)
 
 [node name="HandSprite" type="AnimatedSprite2D" parent="LeftHandZone/LeftHand"]
 z_index = 5
+scale = Vector2(2, 2)
 sprite_frames = ExtResource("2_bjcib")
 animation = &"idle"
 
@@ -58,7 +59,7 @@ position = Vector2(123, 146)
 [node name="HandSprite" type="AnimatedSprite2D" parent="RightHandZone/RightHand"]
 z_index = 5
 rotation = 3.14159
-scale = Vector2(1, -1)
+scale = Vector2(2, -2)
 sprite_frames = ExtResource("2_bjcib")
 animation = &"idle"
 autoplay = "idle"
