@@ -10,13 +10,13 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func move(position: Vector2) -> void:
-	translate(position - global_position)
-
-
 func _on_pickable_drop() -> void:
 	pass # Replace with function body.
 
 
 func _on_pickable_pick_up() -> void:
 	pass # Replace with function body.
+
+
+func _on_pickable_move(target_pos: Vector2) -> void:
+	translate(target_pos - global_position)

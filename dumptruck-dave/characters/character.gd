@@ -1,9 +1,11 @@
 class_name Character
 extends CharacterBody2D
 
-
+var can_move = false
 @export var speed = 300.0
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
+
+@onready var pickable: Pickable = $Pickable
 
 func _ready() -> void:
 	Globals.character_entered.emit(self)
@@ -28,9 +30,3 @@ func move(position: Vector2) -> void:
 	collision_shape.disabled = true
 	translate(position - global_position)
 	collision_shape.disabled = false
-
-func _on_pickable_pick_up() -> void:
-	pass # Replace with function body.
-
-func _on_pickable_drop() -> void:
-	pass # Replace with function body.

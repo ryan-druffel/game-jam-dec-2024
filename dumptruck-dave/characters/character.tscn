@@ -1,8 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://bafdjhctfe3uv"]
+[gd_scene load_steps=9 format=3 uid="uid://bafdjhctfe3uv"]
 
 [ext_resource type="Script" path="res://characters/character.gd" id="1_0uug8"]
 [ext_resource type="Texture2D" uid="uid://cgp73t13momcw" path="res://icon.svg" id="2_86hsc"]
 [ext_resource type="PackedScene" uid="uid://da312amrww033" path="res://world/pickable.tscn" id="3_pf72o"]
+[ext_resource type="Script" path="res://characters/state_machine.gd" id="4_u3cvr"]
+[ext_resource type="Script" path="res://characters/pick_state.gd" id="5_1pyko"]
+[ext_resource type="Script" path="res://characters/idle_state.gd" id="5_fdckm"]
+[ext_resource type="Script" path="res://characters/drop_state.gd" id="7_ou3da"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2t064"]
 size = Vector2(30, 32)
@@ -11,6 +15,7 @@ size = Vector2(30, 32)
 script = ExtResource("1_0uug8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
 texture = ExtResource("2_86hsc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -19,5 +24,15 @@ shape = SubResource("RectangleShape2D_2t064")
 
 [node name="Pickable" parent="." instance=ExtResource("3_pf72o")]
 
-[connection signal="drop" from="Pickable" to="." method="_on_pickable_drop"]
-[connection signal="pick_up" from="Pickable" to="." method="_on_pickable_pick_up"]
+[node name="FSM" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("4_u3cvr")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="FSM"]
+script = ExtResource("5_fdckm")
+
+[node name="Pick" type="Node" parent="FSM"]
+script = ExtResource("5_1pyko")
+
+[node name="Drop" type="Node" parent="FSM"]
+script = ExtResource("7_ou3da")

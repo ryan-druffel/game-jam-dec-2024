@@ -1,11 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://fegkcsa3fxis"]
+[gd_scene load_steps=3 format=3 uid="uid://fegkcsa3fxis"]
 
 [ext_resource type="PackedScene" uid="uid://bafdjhctfe3uv" path="res://characters/character.tscn" id="1_gtsss"]
+[ext_resource type="Script" path="res://characters/dave/dave.gd" id="2_pxpus"]
 
 [node name="Dave" groups=["Dave"] instance=ExtResource("1_gtsss")]
+collision_mask = 4
+script = ExtResource("2_pxpus")
 
 [node name="Sprite2D" parent="." index="0"]
 scale = Vector2(0.24, 0.24)
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(0, 0)
+
+[node name="Drop" parent="FSM" index="2"]
+fixed_duration = 1.0
