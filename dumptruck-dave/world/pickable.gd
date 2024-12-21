@@ -5,6 +5,7 @@ signal pick_up()
 signal move(target_pos: Vector2)
 signal drop()
 
+@export var disabled = false
 var hovered = false
 var picked = false
 
@@ -13,6 +14,8 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
+	if disabled:
+		return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if picked and event.is_released():
 			depick()

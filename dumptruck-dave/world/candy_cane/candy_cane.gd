@@ -1,10 +1,14 @@
-class_name CandyCane extends Pickable
-
+class_name CandyCane extends Item
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Globals.candy_cane_entered.emit(self)
+	super._ready()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func get_gobbled() -> void:
+	$Debris.emitting = true
+	pickable.disabled = true
+	anim.play("Gobble")
+
+func disappear() -> void:
+	super.disappear()
+	$Debris.emitting = false

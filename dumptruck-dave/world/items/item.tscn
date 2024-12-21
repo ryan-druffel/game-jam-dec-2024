@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqsmahyy4yrn"]
+[gd_scene load_steps=5 format=3 uid="uid://dqsmahyy4yrn"]
 
 [ext_resource type="Script" path="res://world/items/item.gd" id="1_bekr7"]
 [ext_resource type="PackedScene" uid="uid://da312amrww033" path="res://world/pickable.tscn" id="2_cvtkd"]
+[ext_resource type="AnimationLibrary" uid="uid://jpcy6cu0cro0" path="res://world/items/item_animation_library.res" id="3_bad2d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ewkam"]
 size = Vector2(26, 47)
 
-[node name="Item" type="Area2D"]
+[node name="Item" type="Area2D" groups=["Item"]]
 y_sort_enabled = true
+collision_layer = 8
 script = ExtResource("1_bekr7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -17,6 +19,11 @@ shape = SubResource("RectangleShape2D_ewkam")
 
 [node name="Pickable" parent="." instance=ExtResource("2_cvtkd")]
 collision_mask = 512
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": ExtResource("3_bad2d")
+}
 
 [connection signal="drop" from="Pickable" to="." method="_on_pickable_drop"]
 [connection signal="move" from="Pickable" to="." method="_on_pickable_move"]

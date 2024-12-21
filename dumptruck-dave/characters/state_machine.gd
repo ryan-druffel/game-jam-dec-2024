@@ -8,6 +8,7 @@ var last_state: State = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	await get_parent().ready
 	states.assign(get_children())
 	transition(initial_state.name)
 

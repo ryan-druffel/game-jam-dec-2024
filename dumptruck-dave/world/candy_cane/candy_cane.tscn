@@ -1,10 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdnuqxadp4wx8"]
+[gd_scene load_steps=7 format=3 uid="uid://cdnuqxadp4wx8"]
 
 [ext_resource type="PackedScene" uid="uid://dqsmahyy4yrn" path="res://world/items/item.tscn" id="1_yn0vl"]
+<<<<<<< Updated upstream
 [ext_resource type="SpriteFrames" uid="uid://wmerp1g35aaj" path="res://world/candy_cane/candy_cane_sprite.tres" id="2_rysqq"]
+=======
+[ext_resource type="Script" path="res://world/candy_cane/candy_cane.gd" id="2_nkj87"]
+[ext_resource type="SpriteFrames" uid="uid://cct3dgcg2odm2" path="res://world/candy_cane/candy_cane_sprite.tres" id="2_rysqq"]
+>>>>>>> Stashed changes
 
-[node name="CandyCane" instance=ExtResource("1_yn0vl")]
+[sub_resource type="Curve" id="Curve_cjwf8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_7aept"]
+curve = SubResource("Curve_cjwf8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8l1ml"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 5.0
+spread = 180.0
+initial_velocity_min = 30.0
+initial_velocity_max = 30.0
+gravity = Vector3(0, 98, 0)
+alpha_curve = SubResource("CurveTexture_7aept")
+
+[node name="CandyCane" groups=["Candy"] instance=ExtResource("1_yn0vl")]
 texture_filter = 1
+collision_layer = 24
+collision_mask = 17
+monitoring = false
+script = ExtResource("2_nkj87")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = ExtResource("2_rysqq")
@@ -12,3 +38,7 @@ autoplay = "default"
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(-1, -0.5)
+
+[node name="Debris" type="GPUParticles2D" parent="." index="4"]
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_8l1ml")

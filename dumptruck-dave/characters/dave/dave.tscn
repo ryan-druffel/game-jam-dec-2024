@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://fegkcsa3fxis"]
+[gd_scene load_steps=6 format=3 uid="uid://fegkcsa3fxis"]
 
 [ext_resource type="PackedScene" uid="uid://bafdjhctfe3uv" path="res://characters/character.tscn" id="1_gtsss"]
 [ext_resource type="Script" path="res://characters/dave/dave.gd" id="2_pxpus"]
+[ext_resource type="Script" path="res://characters/dave/gobble_state.gd" id="3_41kyt"]
+[ext_resource type="Script" path="res://characters/dave/dave_idle_state.gd" id="3_ohmrq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l8kt5"]
+radius = 43.0116
 
 [node name="Dave" groups=["Dave"] instance=ExtResource("1_gtsss")]
 collision_mask = 4
@@ -13,5 +18,18 @@ scale = Vector2(0.24, 0.24)
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(0, 0)
 
+[node name="Idle" parent="FSM" index="0"]
+script = ExtResource("3_ohmrq")
+
 [node name="Drop" parent="FSM" index="2"]
 fixed_duration = 1.0
+
+[node name="Gobble" type="Node" parent="FSM" index="3"]
+script = ExtResource("3_41kyt")
+fixed_duration = 1.0
+
+[node name="CandyCaneArea2D" type="Area2D" parent="." index="4"]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CandyCaneArea2D" index="0"]
+shape = SubResource("CircleShape2D_l8kt5")
