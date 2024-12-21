@@ -7,6 +7,7 @@
 size = Vector2(26, 47)
 
 [node name="Item" type="Area2D"]
+y_sort_enabled = true
 script = ExtResource("1_bekr7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

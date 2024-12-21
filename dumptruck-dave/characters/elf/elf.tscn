@@ -1,7 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://0nbhysihnr7d"]
+[gd_scene load_steps=5 format=3 uid="uid://0nbhysihnr7d"]
 
 [ext_resource type="PackedScene" uid="uid://bafdjhctfe3uv" path="res://characters/character.tscn" id="1_v36ba"]
 [ext_resource type="Script" path="res://characters/elf/elf.gd" id="2_xx3k0"]
+[ext_resource type="Script" path="res://characters/elf/seduce_state.gd" id="3_0hum7"]
+[ext_resource type="Script" path="res://characters/elf/chase_state.gd" id="4_me5mq"]
 
 [node name="Elf" instance=ExtResource("1_v36ba")]
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("2_xx3k0")
+speed = 1.0
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.25, 0.25)
+
+[node name="FSM" parent="." index="3" node_paths=PackedStringArray("initial_state")]
+initial_state = NodePath("Chase")
+
+[node name="Drop" parent="FSM" index="2"]
+fixed_duration = 1.0
+default_transition = "Chase"
+
+[node name="Seduce" type="Node" parent="FSM" index="3"]
+script = ExtResource("3_0hum7")
+fixed_duration = 1.0
+default_transition = "Chase"
+
+[node name="Chase" type="Node" parent="FSM" index="4"]
+script = ExtResource("4_me5mq")
+distance_threshold = 50
