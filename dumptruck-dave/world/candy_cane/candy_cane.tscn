@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cdnuqxadp4wx8"]
 
 [ext_resource type="PackedScene" uid="uid://dqsmahyy4yrn" path="res://world/items/item.tscn" id="1_yn0vl"]
-[ext_resource type="SpriteFrames" uid="uid://cct3dgcg2odm2" path="res://world/candy_cane/candy_cane_sprite.tres" id="2_rysqq"]
+[ext_resource type="SpriteFrames" uid="uid://wmerp1g35aaj" path="res://world/candy_cane/candy_cane_sprite.tres" id="2_rysqq"]
 
 [node name="CandyCane" instance=ExtResource("1_yn0vl")]
 texture_filter = 1
