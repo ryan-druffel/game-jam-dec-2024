@@ -1,12 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://cdnuqxadp4wx8"]
 
 [ext_resource type="PackedScene" uid="uid://dqsmahyy4yrn" path="res://world/items/item.tscn" id="1_yn0vl"]
-<<<<<<< Updated upstream
-[ext_resource type="SpriteFrames" uid="uid://wmerp1g35aaj" path="res://world/candy_cane/candy_cane_sprite.tres" id="2_rysqq"]
-=======
 [ext_resource type="Script" path="res://world/candy_cane/candy_cane.gd" id="2_nkj87"]
 [ext_resource type="SpriteFrames" uid="uid://cct3dgcg2odm2" path="res://world/candy_cane/candy_cane_sprite.tres" id="2_rysqq"]
->>>>>>> Stashed changes
 
 [sub_resource type="Curve" id="Curve_cjwf8"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
