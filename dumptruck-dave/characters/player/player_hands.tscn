@@ -17,6 +17,7 @@ collision_layer = 128
 collision_mask = 128
 script = ExtResource("1_ohule")
 object_name = "Left Hand Zone"
+is_left_hand = true
 hand = NodePath("LeftHand")
 hold_position = NodePath("LeftHandBasePosition")
 

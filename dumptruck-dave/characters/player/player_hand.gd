@@ -3,6 +3,7 @@ extends Area2D
 enum HandStates {IDLE, FOLLOW, HOVER, GRAB}
 
 @export var object_name : String = "none";
+@export var is_left_hand	:	bool = false;
 @export var hand			:	AnimatedSprite2D;
 @export var hold_position	:	Node2D;
 
@@ -34,6 +35,7 @@ func _physics_process(delta):
 		HandStates.HOVER:
 			followMousePosition();
 		HandStates.GRAB:
+			Globals.in_left_hand = is_left_hand
 			hand.play("held");
 			followMousePosition();
 			if not Input.is_mouse_button_pressed( 1 ):

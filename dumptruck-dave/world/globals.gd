@@ -9,3 +9,4 @@ signal item_exited(item: Item)
 
 var picked: Pickable = null
 var dave: Dave = null
+var in_left_hand: bool = false
