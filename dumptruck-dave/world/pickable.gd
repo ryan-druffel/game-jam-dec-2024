@@ -1,21 +1,55 @@
 class_name Pickable
-extends Area2D
+extends CollisionObject2D
 
-var pickable = false
-var pressed = false
+signal pick_up()
+signal move(target_pos: Vector2)
+signal drop()
 
-func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+var hovered = false
+var picked = false
+
+func _ready() -> void:
+	Globals.pickable_entered.emit(self)
+
+
+func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		pressed = event.pressed
-		print("pressed")
+		if picked and event.is_released():
+			depick()
+		elif event.is_pressed() and can_pick():
+			pick()
+#func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	#if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		#print("pressed")
+		#pressed = event.is_pressed()
+	
+func can_pick() -> bool:
+	return not Globals.picked and hovered
+
+func pick() -> void:
+	Globals.picked = self
+	picked = true
+	pick_up.emit()
+
+func depick() -> void:
+	if not picked:
+		return
+	if Globals.picked == self:
+		Globals.picked = null
+	picked = false
+	drop.emit()
 
 func _on_mouse_entered() -> void:
-	pickable = true
+	hovered = true
 
 func _on_mouse_exited() -> void:
-	pickable = false
+	hovered = false
 
 func _physics_process(delta: float) -> void:
-	if pressed:
+	if picked:
 		var mouse_pos: Vector2 = get_global_mouse_position()
-		global_position = global_position.move_toward(mouse_pos, 100)
+		move.emit(mouse_pos)
+
+func remove() -> void:
+	Globals.pickable_exited.emit(self)
+	queue_free()
