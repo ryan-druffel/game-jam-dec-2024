@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://fegkcsa3fxis"]
+[gd_scene load_steps=20 format=3 uid="uid://fegkcsa3fxis"]
 
 [ext_resource type="PackedScene" uid="uid://ckaq71fyniogl" path="res://characters/character.tscn" id="1_gtsss"]
 [ext_resource type="Script" path="res://characters/dave/dave.gd" id="2_pxpus"]
 [ext_resource type="Script" path="res://characters/dave/gobble_state.gd" id="3_41kyt"]
 [ext_resource type="Texture2D" uid="uid://c2rmigbeand82" path="res://characters/dave/Dave.png" id="3_mkdno"]
 [ext_resource type="Script" path="res://characters/dave/dave_idle_state.gd" id="3_ohmrq"]
+[ext_resource type="Script" path="res://world/make_parent_look_iso.gd" id="6_whaql"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p3f4i"]
 atlas = ExtResource("3_mkdno")
@@ -138,5 +139,9 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CandyCaneArea2D" index="0"]
 shape = SubResource("CircleShape2D_l8kt5")
+
+[node name="Scaler" type="Node2D" parent="." index="5" node_paths=PackedStringArray("scale_this")]
+script = ExtResource("6_whaql")
+scale_this = NodePath("..")
 
 [editable path="Pickable"]

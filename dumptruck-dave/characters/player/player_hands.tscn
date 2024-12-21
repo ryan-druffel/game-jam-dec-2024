@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://djxvvu8inqgyk"]
+[gd_scene load_steps=6 format=3 uid="uid://djxvvu8inqgyk"]
 
 [ext_resource type="Script" path="res://characters/player/player_hand.gd" id="1_ohule"]
 [ext_resource type="SpriteFrames" uid="uid://8rskb5fhrgwn" path="res://characters/player/player_mitten.tres" id="2_bjcib"]
+[ext_resource type="Script" path="res://world/make_parent_look_iso.gd" id="3_hudhw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4xspq"]
 size = Vector2(320, 360)
@@ -24,13 +25,19 @@ hold_position = NodePath("LeftHandBasePosition")
 [node name="CollisionZone" type="CollisionShape2D" parent="LeftHandZone"]
 shape = SubResource("RectangleShape2D_4xspq")
 
-[node name="LeftHand" type="AnimatedSprite2D" parent="LeftHandZone"]
+[node name="LeftHandBasePosition" type="Node2D" parent="LeftHandZone"]
+position = Vector2(-120, 141)
+
+[node name="LeftHand" type="Node2D" parent="LeftHandZone"]
+
+[node name="HandSprite" type="AnimatedSprite2D" parent="LeftHandZone/LeftHand"]
 z_index = 5
 sprite_frames = ExtResource("2_bjcib")
 animation = &"idle"
 
-[node name="LeftHandBasePosition" type="Node2D" parent="LeftHandZone"]
-position = Vector2(-120, 141)
+[node name="Scaler" type="Node2D" parent="LeftHandZone/LeftHand" node_paths=PackedStringArray("scale_this")]
+script = ExtResource("3_hudhw")
+scale_this = NodePath("..")
 
 [node name="RightHandZone" type="Area2D" parent="." node_paths=PackedStringArray("hand", "hold_position")]
 collision_layer = 128
@@ -43,12 +50,19 @@ hold_position = NodePath("RightHandBasePosition")
 [node name="CollisionZone" type="CollisionShape2D" parent="RightHandZone"]
 shape = SubResource("RectangleShape2D_aygn5")
 
-[node name="RightHand" type="AnimatedSprite2D" parent="RightHandZone"]
+[node name="RightHandBasePosition" type="Node2D" parent="RightHandZone"]
+position = Vector2(123, 146)
+
+[node name="RightHand" type="Node2D" parent="RightHandZone"]
+
+[node name="HandSprite" type="AnimatedSprite2D" parent="RightHandZone/RightHand"]
 z_index = 5
-scale = Vector2(-1, 1)
+rotation = 3.14159
+scale = Vector2(1, -1)
 sprite_frames = ExtResource("2_bjcib")
 animation = &"idle"
 autoplay = "idle"
 
-[node name="RightHandBasePosition" type="Node2D" parent="RightHandZone"]
-position = Vector2(123, 146)
+[node name="Scaler" type="Node2D" parent="RightHandZone/RightHand" node_paths=PackedStringArray("scale_this")]
+script = ExtResource("3_hudhw")
+scale_this = NodePath("..")

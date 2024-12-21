@@ -4,7 +4,7 @@ enum HandStates {IDLE, FOLLOW, HOVER, GRAB}
 
 @export var object_name : String = "none";
 @export var is_left_hand	:	bool = false;
-@export var hand			:	AnimatedSprite2D;
+@export var hand			:	Node2D;
 @export var hold_position	:	Node2D;
 
 var hand_state		:	HandStates	=	HandStates.IDLE;
@@ -21,12 +21,12 @@ func _ready():
 func _physics_process(delta):
 	match hand_state:
 		HandStates.IDLE:
-			hand.play("idle");
+			hand.get_node("HandSprite").play("idle");
 			goHome();
 			if mouse_in_zone and not Input.is_mouse_button_pressed( 1 ):
 				hand_state = HandStates.FOLLOW;
 		HandStates.FOLLOW:
-			hand.play("idle");
+			hand.get_node("HandSprite").play("idle");
 			followMousePosition();
 			if not mouse_in_zone:
 				hand_state = HandStates.IDLE;
@@ -36,7 +36,7 @@ func _physics_process(delta):
 			followMousePosition();
 		HandStates.GRAB:
 			Globals.in_left_hand = is_left_hand
-			hand.play("held");
+			hand.get_node("HandSprite").play("held");
 			followMousePosition();
 			if not Input.is_mouse_button_pressed( 1 ):
 				hand_state = HandStates.FOLLOW;
